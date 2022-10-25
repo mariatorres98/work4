@@ -1,0 +1,294 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;700&family=Barlow:wght@400;700&family=Bellefair&display=swap');
+@import 'breakpoints';
+$font-base-family-1: 'Barlow';
+$font-base-family-2: 'Barlow Condensed';
+$font-base-family-3: 'Bellefair';
+
+
+$font-size-v1: 9.375rem; //150px
+$font-size-v2: 6.25rem; //100px
+$font-size-v3: 5rem; //80px
+$font-size-v4: 3.5rem; //56px
+$font-size-v5: 2.5rem; //40px
+$font-size-v6: 2rem; //32px
+$font-size-v7: 1.75rem; //28px
+$font-size-v8: 1.5rem; //24px
+$font-size-v9: 1.25rem; //20px
+$font-size-v10: 1.125rem; //18px
+$font-size-v11: 1rem; //16px
+$font-size-v12: .938rem; //15px
+$font-size-v13: .875rem; //14px
+
+$font-weight-400: 400;
+$font-weight-700: 700;
+
+
+$text-transfrom-upper: uppercase;
+$text-transfrom-capitalize: capitalize;
+
+$letter-spacing-1: 2.7px;
+
+$color-very-dark: hsl(230, 33%, 7%);
+$color-light-grayish-blue: hsl(231, 77%, 90%);
+$color-white: hsl(0, 0%, 100%);
+$color-opacity: .25;
+
+@mixin heroStyle {
+    position: absolute;
+    color: $color-white;
+    text-align: center;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@mixin heroImage {
+    position: relative;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+
+@mixin navbarHover {
+
+    &::after {
+        content: '';
+        position: absolute;
+        bottom: -100%;
+        width: 0%;
+        left: 0%;
+        border-bottom: 3px solid $color-white;
+        background: none;
+        transition: .8s cubic-bezier(0.5, 1, 0.89, 1);
+        display: block;
+    }
+
+    &:hover::after,
+    &:focus::after {
+        opacity: .5;
+        width: 100%;
+        border-bottom: 3px solid $color-white
+    }
+
+    &.active__link::after {
+        width: 100%;
+    }
+}
+
+
+@mixin heroImgPostion {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0 1.6rem;
+    color: $color-white;
+    margin-top: 1rem;
+    width: 100vw;
+}
+
+#header .header {
+    height: auto;
+    background-color: transparent;
+
+    .nav-bar {
+        margin-top: .6rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        height: 100%;
+
+        @include media('>largePhone') {
+            margin-top: 0;
+        }
+
+        @include media('>smallDesktop') {
+            margin-top: 2rem;
+        }
+
+        .brand {
+            z-index: 9;
+            height: 48px;
+            width: 48px;
+            margin-left: 1.2rem;
+        }
+
+        @include media('>smallDesktop') {
+            .nav-line {
+                position: absolute;
+                width: 37%;
+                border: 1px solid $color-white;
+                opacity: .25;
+                margin-left: 17rem;
+                top: 69px;
+                z-index: 1;
+            }
+        }
+
+        @include media('>largePhone') {
+            height: 75px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-list {
+            @include media('>largePhone') {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            #nav__list {
+                position: absolute;
+                content: '';
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: flex-start;
+                background: rgba(56, 54, 54, 0.698);
+                -webkit-backdrop-filter: blur(15px);
+                backdrop-filter: blur(15px);
+                width: 75vw;
+                height: 80vh;
+                right: 0%;
+                left: -100%;
+                top: 0;
+                overflow-x: hidden;
+                transition: .6s cubic-bezier(0, 0.55, 0.45, 1);
+                z-index: 3;
+
+                @include media('>largePhone') {
+                    position: initial;
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: center;
+                    height: auto;
+                    width: auto;
+                    background-color: transparent;
+                    padding-right: 0rem;
+                }
+                &.active {
+                    left: 25%;
+                }
+
+                li {
+
+                    @include media('>largePhone') {
+                        padding: 1rem .8rem;
+                    }
+
+                    @include media('>=tablet') {
+                        padding: 1rem 2rem;
+                    }
+
+                    @include media('>largePhone') {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        background: rgba(170, 160, 160, 0.109);
+                        height: 76px;
+                    }
+
+                    .navbar__link {
+                        position: relative;
+                        color: $color-white;
+                        text-transform: uppercase;
+                        margin-bottom: 2rem;
+                        display: block;
+                        font-family: $font-base-family-2;
+                        font-weight: $font-weight-400;
+                        font-size: $font-size-v11;
+                        letter-spacing: $letter-spacing-1;
+                        padding-left: .938rem;
+
+                        @include media('>largePhone') {
+                            padding-left: 0;
+                        }
+
+                        @include media('>=tablet') {
+                            margin: 0 auto
+                        }
+
+                        @include navbarHover;
+
+                        span {
+                            font-weight: $font-weight-700;
+
+                            @include media('>largePhone') {
+                                margin-right: .2rem;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .hamburger {
+                position: relative;
+                height: 60px;
+                width: 60px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                z-index: 10;
+                cursor: pointer;
+
+                @include media('>largePhone') {
+                    display: none;
+                }
+
+                &:after {
+                    position: absolute;
+                    content: '';
+                    height: 100%;
+                    width: 100%;
+                }
+
+                .bar {
+                    height: 3px;
+                    width: 30px;
+                    position: relative;
+                    background-color: $color-white;
+                    z-index: -1;
+
+                    &::after,
+                    &::before {
+                        content: '';
+                        position: absolute;
+                        height: 100%;
+                        width: 100%;
+                        left: 0;
+                        background-color: $color-white;
+                        transition: .3s ease;
+                    }
+
+                    &::after {
+                        top: 8px;
+                    }
+
+                    &::before {
+                        bottom: 8px;
+                    }
+                }
+            }
+
+            .hamburger.active ::before {
+                bottom: 0;
+            }
+
+            .hamburger.active ::after {
+                top: 0;
+            }
+        }
+    }
+}

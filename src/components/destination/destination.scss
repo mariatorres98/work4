@@ -1,0 +1,317 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;700&family=Barlow:wght@400;700&family=Bellefair&display=swap');
+@import 'breakpoints';
+$font-base-family-1: 'Barlow';
+$font-base-family-2: 'Barlow Condensed';
+$font-base-family-3: 'Bellefair';
+
+
+$font-size-v1: 9.375rem; //150px
+$font-size-v2: 6.25rem; //100px
+$font-size-v3: 5rem; //80px
+$font-size-v4: 3.5rem; //56px
+$font-size-v5: 2.5rem; //40px
+$font-size-v6: 2rem; //32px
+$font-size-v7: 1.75rem; //28px
+$font-size-v8: 1.5rem; //24px
+$font-size-v9: 1.25rem; //20px
+$font-size-v10: 1.125rem; //18px
+$font-size-v11: 1rem; //16px
+$font-size-v12: .938rem; //15px
+$font-size-v13: .875rem; //14px
+
+$font-weight-400: 400;
+$font-weight-700: 700;
+
+
+$text-transfrom-upper: uppercase;
+$text-transfrom-capitalize: capitalize;
+
+$letter-spacing-1: 2.7px;
+
+$color-very-dark: hsl(230, 33%, 7%);
+$color-light-grayish-blue: hsl(231, 77%, 90%);
+$color-white: hsl(0, 0%, 100%);
+$color-opacity: .25;
+
+@mixin heroStyle {
+    position: absolute;
+    color: $color-white;
+    text-align: center;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@mixin heroImage {
+    position: relative;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+
+@mixin navbarHover {
+
+    &::after {
+        content: '';
+        position: absolute;
+        bottom: -100%;
+        width: 0%;
+        left: 0%;
+        border-bottom: 3px solid $color-white;
+        background: none;
+        transition: .8s cubic-bezier(0.5, 1, 0.89, 1);
+        display: block;
+    }
+
+    &:hover::after,
+    &:focus::after {
+        opacity: .5;
+        width: 100%;
+        border-bottom: 3px solid $color-white
+    }
+
+    &.active__link::after {
+        width: 100%;
+    }
+}
+
+
+@mixin heroImgPostion {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0 1.6rem;
+    color: $color-white;
+    margin-top: 1rem;
+    width: 100vw;
+    height: 100vh;
+}
+
+
+.destination__bg {
+    @include heroStyle;
+
+    .container__img {
+        @include heroImage;
+        width: 100vw;
+        height: 100vh;
+        margin-bottom: -70px;
+
+
+        background-image: url('../../asset/background-destination-desktop.jpg');
+        
+
+
+    }
+}
+
+.destination {
+    @include heroImgPostion;
+
+    @include media('>smallDesktop') {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-evenly;
+        text-align: left;
+        margin-top: 4rem;
+        padding: 4rem;
+    }
+
+    .destination__top {
+
+        @include media('>smallDesktop') {
+            margin-right: 8rem;
+        }
+
+        @include media('>largePhone') {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        h4 {
+            font-size: $font-size-v10;
+            text-transform: $text-transfrom-upper;
+            font-family: $font-base-family-2;
+            letter-spacing: 2.4;
+            font-weight: $font-weight-400;
+            line-height: 20px;
+            margin-top: 2rem;
+
+            @include media('>largePhone') {
+                font-size: $font-size-v9;
+                margin-bottom: 1rem;
+            }
+
+            @include media('>smallDesktop') {
+                font-size: $font-size-v7;
+                letter-spacing: 4.7px;
+            }
+
+            span {
+                font-weight: $font-weight-700;
+                opacity: $color-opacity;
+            }
+        }
+
+        .destination__place {
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            width: 170px;
+            height: 170px;
+            margin: 0 auto;
+            margin-top: 2.5rem;
+
+            @include media('>=tablet') {
+                width: 300px;
+                height: 300px;
+            }
+
+            @include media('>smallDesktop') {
+                width: 445px;
+                height: 445px;
+            }
+        }
+    }
+
+    .destination__bottom {
+        .page__links {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: row;
+            list-style: none;
+            margin: 1.2rem 0;
+
+            @include media('>smallDesktop') {
+                margin-right: 1.8rem;
+            }
+
+            li {
+                a {
+                    font-family: $font-base-family-2;
+                    font-size: $font-size-v13;
+                    text-transform: $text-transfrom-upper;
+                    color: $color-white;
+                    margin: 0 1rem;
+                    letter-spacing: $letter-spacing-1;
+                    position: relative;
+                    display: block;
+
+                    @include navbarHover;
+
+                    @include media('>largePhone') {
+                        font-size: $font-size-v11;
+                    }
+                }
+            }
+        }
+
+        .text__info {
+            h1 {
+                font-family: $font-base-family-3;
+                font-size: $font-size-v4;
+                text-transform: $text-transfrom-upper;
+                text-align: center;
+                font-weight: $font-weight-400;
+
+                @include media('>largePhone') {
+                    font-size: $font-size-v3;
+                }
+
+                @include media('>=tablet') {
+                    font-size: $font-size-v2;
+                    margin-top: 2rem;
+                }
+
+                @include media('>=smallDesktop') {
+                    text-align: left;
+                }
+            }
+
+            p {
+                font-family: $font-base-family-1;
+                line-height: 25px;
+                font-size: $font-size-v12;
+                text-align: center;
+                margin-bottom: 2rem;
+
+                @include media('>largePhone') {
+                    font-size: $font-size-v11;
+                    line-height: 28px;
+                    width: 570px;
+                }
+
+                @include media('>smallDesktop') {
+                    text-align: left;
+                    width: 444px;
+                }
+
+                @include media('>largePhone') {
+                    font-size: $font-size-v10;
+                }
+            }
+
+            .line {
+                border: 1px solid $color-white;
+                opacity: $color-opacity;
+            }
+
+            .travel-info {
+
+                h2,
+                h3 {
+                    font-family: $font-base-family-3;
+                    font-size: $font-size-v7;
+                    text-transform: $text-transfrom-upper;
+                    display: flex;
+                    text-align: center;
+                    flex-direction: column;
+                    margin-top: 1rem;
+                    font-weight: $font-weight-400;
+
+                    span {
+                        font-family: $font-base-family-2;
+                        font-size: $font-size-v13;
+                        font-weight: $font-weight-400;
+                        line-height: 2rem;
+                        letter-spacing: $letter-spacing-1;
+                    }
+
+                    @include media('>smallDesktop') {
+                        font-size: $font-size-v7;
+                    }
+                }
+
+                @include media('>largePhone') {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    justify-content: space-around;
+                    margin-top: 1.5rem;
+                }
+
+                @include media('>smallDesktop') {
+                    justify-content: space-between;
+                }
+            }
+
+            @include media('>smallDesktop') {
+                margin-left: 7rem;
+            }
+        }
+    }
+}

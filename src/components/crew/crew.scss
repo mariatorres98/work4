@@ -1,0 +1,290 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;700&family=Barlow:wght@400;700&family=Bellefair&display=swap');
+@import 'breakpoints';
+$font-base-family-1: 'Barlow';
+$font-base-family-2: 'Barlow Condensed';
+$font-base-family-3: 'Bellefair';
+
+
+$font-size-v1: 9.375rem; //150px
+$font-size-v2: 6.25rem; //100px
+$font-size-v3: 5rem; //80px
+$font-size-v4: 3.5rem; //56px
+$font-size-v5: 2.5rem; //40px
+$font-size-v6: 2rem; //32px
+$font-size-v7: 1.75rem; //28px
+$font-size-v8: 1.5rem; //24px
+$font-size-v9: 1.25rem; //20px
+$font-size-v10: 1.125rem; //18px
+$font-size-v11: 1rem; //16px
+$font-size-v12: .938rem; //15px
+$font-size-v13: .875rem; //14px
+
+$font-weight-400: 400;
+$font-weight-700: 700;
+
+
+$text-transfrom-upper: uppercase;
+$text-transfrom-capitalize: capitalize;
+
+$letter-spacing-1: 2.7px;
+
+$color-very-dark: hsl(230, 33%, 7%);
+$color-light-grayish-blue: hsl(231, 77%, 90%);
+$color-white: hsl(0, 0%, 100%);
+$color-opacity: .25;
+
+@mixin heroStyle {
+    position: absolute;
+    color: $color-white;
+    text-align: center;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@mixin heroImage {
+    position: relative;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+
+@mixin navbarHover {
+
+    &::after {
+        content: '';
+        position: absolute;
+        bottom: -100%;
+        width: 0%;
+        left: 0%;
+        border-bottom: 3px solid $color-white;
+        background: none;
+        transition: .8s cubic-bezier(0.5, 1, 0.89, 1);
+        display: block;
+    }
+
+    &:hover::after,
+    &:focus::after {
+        opacity: .5;
+        width: 100%;
+        border-bottom: 3px solid $color-white
+    }
+
+    &.active__link::after {
+        width: 100%;
+    }
+}
+
+
+@mixin heroImgPostion {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0 1.6rem;
+    color: $color-white;
+    margin-top: -120px;
+    width: 100vw;
+    height: 100vh;
+}
+.crew__bg {
+    @include heroStyle;
+
+    .container__img {
+        @include heroImage;
+        width: 100vw;
+        height: 720px;
+        min-height: 100vh;
+        background-image: url('../../asset/background-crew-desktop.jpg');
+
+    }
+}
+
+.crew {
+    @include heroImgPostion;
+    h2 {
+        font-size: $font-size-v10;
+        text-transform: $text-transfrom-upper;
+        font-family: $font-base-family-2;
+        letter-spacing: $letter-spacing-1;
+        font-weight: $font-weight-400;
+        line-height: 20px;
+        margin-top: 1rem;
+        text-align: center;
+        margin-bottom: 3rem;
+        position: relative;
+
+        @include media('>=tablet') {
+            position: absolute;
+            font-size: $font-size-v8;
+            top: -5%;
+            margin-top: 3rem;
+        }
+
+        @include media('>=smallDesktop') {
+            right: 76%;
+            top: 8%;
+            position: absolute;
+            font-size: $font-size-v7;
+        }
+
+        span {
+            font-weight: $font-weight-700;
+            opacity: $color-opacity;
+        }
+    }
+
+    @include media('>=tablet') {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column-reverse;
+    }
+
+    .crew__top {
+        .crew__img {
+            width: 177px;
+            height: 177px;
+            position: relative;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            overflow: hidden;
+
+            @include media('>=tablet') {
+                width: 456px;
+                height: 572px;
+                top: 18px;
+                overflow: hidden;
+            }
+
+            @include media('>=smallDesktop') {
+                right: -70%;
+                top: 3.3rem;
+            }
+
+            @include media('>=midDesktop') {
+                width: 568.07px;
+                height: 712px;
+                top: 4rem;
+            }
+
+            .line {
+                position: absolute;
+                width: 350px;
+                top: 240px;
+                left: -83px;
+                border-bottom: 1px solid $color-white;
+                opacity: $color-opacity;
+
+                @include media('>=tablet') {
+                    border: none;
+                }
+            }
+        }
+    }
+
+    .crew__bottom {
+        @include media('>=tablet') {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column-reverse;
+        }
+
+        @include media('>=smallDesktop') {
+            position: absolute;
+            left: 8%;
+        }
+
+        .page__links {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+
+            @include media('>=smallDesktop') {
+                position: absolute;
+                bottom: -25%;
+                left: -2%;
+            }
+
+            li {
+                list-style: none;
+                .dot {
+                    width: 15px;
+                    height: 15px;
+                    background: $color-white;
+                    border-radius: 50%;
+                    opacity: $color-opacity;
+                    display: inline-block;
+                    margin: 0rem 1rem;
+                    margin-top: 3rem;
+                    list-style: none;
+
+                   
+                }
+            }
+        }
+
+        .text__info {
+            h1 {
+                font-family: $font-base-family-3;
+                font-size: $font-size-v8;
+                display: flex;
+                flex-direction: column;
+                text-align: center;
+                margin-top: 2rem;
+                text-transform: $text-transfrom-upper;
+                font-weight: $font-weight-400;
+
+                @include media('>=tablet') {
+                    margin-top: 4rem;
+                }
+
+                @include media('>=smallDesktop') {
+                    text-align: left;
+                    font-size: $font-size-v4;
+                }
+
+                span {
+                    font-size: $font-size-v11;
+                    opacity: $color-opacity;
+                    font-family: $font-base-family-3;
+
+                    @include media('>=smallDesktop') {
+                        font-size: $font-size-v6;
+                    }
+                }
+            }
+
+            p {
+                margin-top: 2rem;
+                font-size: $font-size-v12;
+                text-align: center;
+
+                @include media('>=tablet') {
+                    width: 460px;
+                }
+
+                @include media('>=smallDesktop') {
+                    text-align: left;
+                    font-size: $font-size-v10;
+                }
+            }
+        }
+    }
+}
+.img_comandante{
+    margin-top: 100px;
+    height: 480px;
+}

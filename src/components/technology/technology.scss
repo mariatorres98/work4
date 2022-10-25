@@ -1,0 +1,289 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;700&family=Barlow:wght@400;700&family=Bellefair&display=swap');
+@import 'breakpoints';
+$font-base-family-1: 'Barlow';
+$font-base-family-2: 'Barlow Condensed';
+$font-base-family-3: 'Bellefair';
+
+
+$font-size-v1: 9.375rem; //150px
+$font-size-v2: 6.25rem; //100px
+$font-size-v3: 5rem; //80px
+$font-size-v4: 3.5rem; //56px
+$font-size-v5: 2.5rem; //40px
+$font-size-v6: 2rem; //32px
+$font-size-v7: 1.75rem; //28px
+$font-size-v8: 1.5rem; //24px
+$font-size-v9: 1.25rem; //20px
+$font-size-v10: 1.125rem; //18px
+$font-size-v11: 1rem; //16px
+$font-size-v12: .938rem; //15px
+$font-size-v13: .875rem; //14px
+
+$font-weight-400: 400;
+$font-weight-700: 700;
+
+
+$text-transfrom-upper: uppercase;
+$text-transfrom-capitalize: capitalize;
+
+$letter-spacing-1: 2.7px;
+
+$color-very-dark: hsl(230, 33%, 7%);
+$color-light-grayish-blue: hsl(231, 77%, 90%);
+$color-white: hsl(0, 0%, 100%);
+$color-opacity: .25;
+
+@mixin heroStyle {
+    position: absolute;
+    color: $color-white;
+    text-align: center;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@mixin heroImage {
+    position: relative;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+
+@mixin navbarHover {
+
+    &::after {
+        content: '';
+        position: absolute;
+        bottom: -100%;
+        width: 0%;
+        left: 0%;
+        border-bottom: 3px solid $color-white;
+        background: none;
+        transition: .8s cubic-bezier(0.5, 1, 0.89, 1);
+        display: block;
+    }
+
+    &:hover::after,
+    &:focus::after {
+        opacity: .5;
+        width: 100%;
+        border-bottom: 3px solid $color-white
+    }
+
+    &.active__link::after {
+        width: 100%;
+    }
+}
+
+
+@mixin heroImgPostion {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0 1.6rem;
+    color: $color-white;
+    margin-top: -120px;
+    width: 100vw;
+    height: 100vh;
+}
+
+
+.tech__bg {
+    @include heroStyle;
+
+    .container__img {
+        @include heroImage;
+        width: 100vw;
+        height: 100vh;
+        min-height: 667px;
+        background-image: url('../../asset/background-technology-desktop.jpg');
+
+    }
+}
+
+.cohete{
+    margin-top: 100px;
+    height: 480px;
+    border-radius: 5px;
+}
+.titulo{
+    margin-left: 30px;
+    margin-top: 100px
+}
+.tech {
+
+    @include heroImgPostion;
+    padding: 0;
+
+    @include media('>=smallDesktop') {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-direction: row-reverse;
+    }
+
+    .tech__top {
+        margin-top: 50px;
+        margin: 2.5rem 0;
+
+        @include media('>=tablet') {
+            margin-top: 20%;
+        }
+
+        @include media('>=smallDesktop') {
+            margin-top: 5%;
+        }
+
+        @include media('>=midDesktop') {
+            margin-top: 10%;
+        }
+    }
+
+    .tech__bottom {
+        padding: 0 1.5rem;
+        text-align: center;
+
+        @include media('>=smallDesktop') {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        h2 {
+            font-family: $font-base-family-2;
+            font-size: $font-size-v11;
+            text-transform: $text-transfrom-upper;
+            letter-spacing: 2.7px;
+            font-weight: $font-weight-400;
+            position: absolute;
+            top: -1%;
+            left: 30%;
+
+            span {
+                font-weight: $font-weight-700;
+                opacity: $color-opacity;
+            }
+
+            @include media('>=tablet') {
+                font-size: $font-size-v9;
+                left: 4%;
+                top: 3.5%;
+            }
+
+            @include media('>=smallDesktop') {
+                font-size: $font-size-v7;
+            }
+        }
+
+        .page__links {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            @include media('>=smallDesktop') {
+                display: block;
+            }
+
+            li {
+                list-style: none;
+                .dot {
+                    font-family: $font-base-family-3;
+                    font-size: $font-size-v11;
+                    color: $color-white;
+                    width: 40px;
+                    height: 40px;
+                    border: 1px solid hsla(0, 0%, 100%, 0.363);
+                    margin: 1rem;
+                    border-radius: 50%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    transition: 0.6s cubic-bezier(0.61, 1, 0.88, 1);
+
+                    &:hover,
+                    &:focus,
+                    &.active__link {
+                        border: 1px solid $color-white;
+                    }
+
+                    @include media('>=smallDesktop') {
+                        width: 80px;
+                        height: 80px;
+                        font-size: $font-size-v6;
+                        margin: 2.5rem;
+                    }
+                }
+
+                .active {
+                    background-color: white;
+                    color: $color-very-dark;
+                    border: 1px solid $color-white;
+                }
+            }
+        }
+
+        .text__info {
+
+            @include media('>=smallDesktop') {
+                display: block;
+                text-align: left;
+            }
+
+            h1 {
+                font-family: $font-base-family-3;
+                font-size: $font-size-v8;
+                text-transform: $text-transfrom-upper;
+                font-weight: $font-weight-400;
+                display: flex;
+                flex-direction: column;
+                margin-top: 2rem;
+
+                span {
+                    font-family: $font-base-family-2;
+                    font-size: $font-size-v13;
+                    letter-spacing: 2.4px;
+
+                    @include media('>=tablet') {
+                        font-size: $font-size-v12;
+                    }
+                }
+
+                @include media('>=tablet') {
+                    font-size: $font-size-v5;
+                }
+
+                @include media('>=smallDesktop') {
+                    font-size: $font-size-v4;
+                    margin-top: .5rem;
+                }
+            }
+
+            p {
+                font-size: $font-size-v12;
+                line-height: 25px;
+                margin-top: 1rem;
+
+                @include media('>=tablet') {
+                    font-size: $font-size-v11;
+                    width: 460px;
+                }
+
+                @include media('>=smallDesktop') {
+                    font-size: $font-size-v10;
+                    width: 445px;
+                    line-height: 32px;
+                }
+            }
+        }
+    }
+}
